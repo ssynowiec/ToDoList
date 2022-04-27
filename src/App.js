@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import styles from './App.module.css';
+import Header from './components/Header';
+import TaskInput from './components/TaskInput';
+import TasksList from './components/TasksList';
+
+const tasksList = [
+	{ id: 0, name: 'gym', completed: false },
+	{ id: 1, name: 'work', completed: true },
+	{ id: 2, name: 'travel', completed: false },
+];
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [userTasksList, setuserTasksList] = useState(tasksList);
+
+	const addNewTask = newTask => {
+		setuserTasksList(prevTasksList => [...prevTasksList, newTask]);
+	};
+
+	return (
+		<>
+			<Header />
+			<main className={styles.content}>
+				<TaskInput onNewTaskAdded={addNewTask} />
+				<TasksList tasks={userTasksList} />
+			</main>
+		</>
+	);
 }
 
 export default App;

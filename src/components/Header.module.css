@@ -1,0 +1,12 @@
+.header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.title,
+.subtite {
+	color: #fff;
+	text-align: center;
+}
