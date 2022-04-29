@@ -1,0 +1,67 @@
+.task {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1.1rem;
+	padding: 10px 15px;
+	text-transform: capitalize;
+	margin-top: 10px;
+	border-radius: 5px;
+	background-color: #fff;
+	color: #000;
+	cursor: pointer;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.deleteBtn {
+	opacity: 0;
+	padding: 10px 10px;
+	background-color: transparent;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.1s, opacity 0.2s;
+}
+
+.task:hover .deleteBtn {
+	opacity: 1;
+}
+
+.completed .deleteBtn {
+	color: #fff;
+}
+
+.completed .deleteBtn:hover {
+	background-color: #fff;
+	color: #6c63ff;
+}
+
+.deleteBtn:hover {
+	background-color: #6c63ff;
+	color: #fff;
+}
+
+.task::after {
+	position: absolute;
+	content: '';
+	width: 0;
+	transition: width 0.2s;
+}
+
+.completed {
+	position: relative;
+	background-color: #6c63ff;
+	color: #fff;
+	/* text-decoration: line-through; */
+}
+
+.completed::after {
+	content: '';
+	position: absolute;
+	left: 2.5%;
+	/* margin: 0 auto; */
+	width: 90%;
+	height: 2px;
+	background-color: rgba(255, 255, 255, 0.829);
+	border-radius: 2px;
+}

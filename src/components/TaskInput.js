@@ -8,14 +8,14 @@ const TaskInput = ({ onNewTaskAdded }) => {
 
 	const addNewTask = e => {
 		e.preventDefault();
-		const taskId = Math.floor(Math.random() * (100 - 1)) + 1;
-		if (taskName === '') {
+		const taskId = Math.floor(Math.random() * (10000 - 1)) + 1;
+		if (taskName.trim() === '') {
 			setError('Ooops, Please enter task name');
 			return;
 		}
 		const newTask = {
 			id: taskId,
-			name: taskName,
+			name: taskName.trim(),
 			completed: false,
 		};
 		onNewTaskAdded(newTask);
@@ -35,6 +35,7 @@ const TaskInput = ({ onNewTaskAdded }) => {
 						type='text'
 						placeholder='Add 🆕 task'
 						id='taskName'
+						autoFocus={true}
 						className={styles.input}
 						onChange={e => setTaskName(e.target.value)}
 					/>
