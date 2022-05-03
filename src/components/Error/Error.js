@@ -1,5 +1,5 @@
-import errorImg from '../img/error.png';
-import styles from './styles/Error.module.css';
+import errorImg from '../../img/error.png';
+import styles from './Error.module.css';
 
 export const Error = ({ children }) => {
 	return (

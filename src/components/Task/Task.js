@@ -1,12 +1,16 @@
-import styles from './styles/Task.module.css';
+import { useContext } from 'react';
+import styles from './Task.module.css';
+import { TaskStatus } from '../../App';
 
-export const Task = ({ task, onDeleteTask, onChangeTaskStatus }) => {
+export const Task = ({ task }) => {
+	const ctx = useContext(TaskStatus);
+
 	const deleteTask = () => {
-		onDeleteTask(task.id);
+		ctx.delete(task.id);
 	};
 
 	const markAsDone = () => {
-		onChangeTaskStatus(task.id);
+		ctx.change(task.id);
 	};
 
 	return (

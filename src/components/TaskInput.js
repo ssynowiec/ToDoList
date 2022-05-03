@@ -1,10 +1,13 @@
-import { useState } from 'react';
-import { Error } from './Error';
-import styles from './styles/TaskInput.module.css';
+import { useContext, useState } from 'react';
+import { TaskStatus } from '../App';
+import { Error } from './Error/Error';
+import styles from './TaskInput.module.css';
 
-export const TaskInput = ({ onNewTaskAdded }) => {
+export const TaskInput = () => {
 	const [taskName, setTaskName] = useState('');
 	const [error, setError] = useState('');
+
+	const ctx = useContext(TaskStatus);
 
 	const addNewTask = e => {
 		e.preventDefault();
@@ -18,7 +21,7 @@ export const TaskInput = ({ onNewTaskAdded }) => {
 			name: taskName.trim(),
 			completed: false,
 		};
-		onNewTaskAdded(newTask);
+		ctx.add(newTask);
 		setTaskName('');
 		setError('');
 	};

@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import styles from './App.module.css';
-import { Header } from './components/Header';
+import { Header } from './components/Header/Header';
 import { TaskInput } from './components/TaskInput';
 import { TasksList } from './components/TasksList';
-import { Footer } from './components/Footer';
-import { Button } from './components/Button';
+import { Footer } from './components/Footer/Footer';
+import { Button } from './components/Button/Button';
 
 const tasksList = [
 	{ id: 0, name: 'gym', completed: false },
@@ -12,7 +12,13 @@ const tasksList = [
 	{ id: 2, name: 'travel', completed: false },
 ];
 
-function App() {
+export const TaskStatus = createContext({
+	change: () => {},
+	delete: () => {},
+	add: () => {},
+});
+
+export const App = () => {
 	const [userTasksList, setuserTasksList] = useState(tasksList);
 
 	const addNewTask = newTask => {
@@ -40,21 +46,22 @@ function App() {
 		setuserTasksList([]);
 	};
 
+	const ctx = useContext(TaskStatus);
+	ctx.change = changeTaskStatus;
+	ctx.delete = deleteTask;
+	ctx.add = addNewTask;
+
 	return (
 		<>
 			<Header />
 			<main className={styles.content}>
-				<TaskInput onNewTaskAdded={addNewTask} />
+				<TaskInput />
 				{userTasksList.length === 0 && (
 					<h2 className={styles.noTasks}>
 						No tasks 🤷‍♂️, add here anything
 					</h2>
 				)}
-				<TasksList
-					tasks={userTasksList}
-					onDeleteTask={deleteTask}
-					onChangeTaskStatus={changeTaskStatus}
-				/>
+				<TasksList tasks={userTasksList} />
 				{userTasksList.length > 0 && (
 					<Button onClick={deleteAllTasks}>Clear All</Button>
 				)}
@@ -62,6 +69,4 @@ function App() {
 			<Footer />
 		</>
 	);
-}
-
-export default App;
+};
