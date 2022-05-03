@@ -1,7 +1,7 @@
-import Task from './Task';
-import styles from './TasksList.module.css';
+import { Task } from './Task';
+import styles from './styles/TasksList.module.css';
 
-const TasksList = ({ tasks, onDeleteTask, onMarkAsDone }) => {
+export const TasksList = ({ tasks, onDeleteTask, onChangeTaskStatus }) => {
 	return (
 		<section className={styles.tasksList}>
 			<ul className={styles.taskListContainer}>
@@ -11,7 +11,7 @@ const TasksList = ({ tasks, onDeleteTask, onMarkAsDone }) => {
 							task={task}
 							key={task.id}
 							onDeleteTask={onDeleteTask}
-							onMarkAsDone={onMarkAsDone}
+							onChangeTaskStatus={onChangeTaskStatus}
 						/>
 					);
 				})}
@@ -19,5 +19,3 @@ const TasksList = ({ tasks, onDeleteTask, onMarkAsDone }) => {
 		</section>
 	);
 };
-
-export default TasksList;

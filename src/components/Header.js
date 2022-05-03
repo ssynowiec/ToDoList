@@ -1,8 +1,8 @@
-import Logo from './Logo';
+import { Logo } from './Logo';
 
-import styles from './Header.module.css';
+import styles from './styles/Header.module.css';
 
-const Header = () => {
+export const Header = () => {
 	return (
 		<header className={styles.header}>
 			<Logo height='150vh' />
@@ -13,5 +13,3 @@ const Header = () => {
 		</header>
 	);
 };
-
-export default Header;

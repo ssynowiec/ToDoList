@@ -1,12 +1,12 @@
-import styles from './Task.module.css';
+import styles from './styles/Task.module.css';
 
-const Task = ({ task, onDeleteTask, onMarkAsDone }) => {
+export const Task = ({ task, onDeleteTask, onChangeTaskStatus }) => {
 	const deleteTask = () => {
 		onDeleteTask(task.id);
 	};
 
 	const markAsDone = () => {
-		onMarkAsDone(task.id);
+		onChangeTaskStatus(task.id);
 	};
 
 	return (
@@ -27,5 +27,3 @@ const Task = ({ task, onDeleteTask, onMarkAsDone }) => {
 		</li>
 	);
 };
-
-export default Task;

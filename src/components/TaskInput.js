@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Error from './Error';
-import styles from './TaskInput.module.css';
+import { Error } from './Error';
+import styles from './styles/TaskInput.module.css';
 
-const TaskInput = ({ onNewTaskAdded }) => {
+export const TaskInput = ({ onNewTaskAdded }) => {
 	const [taskName, setTaskName] = useState('');
 	const [error, setError] = useState('');
 
@@ -49,5 +49,3 @@ const TaskInput = ({ onNewTaskAdded }) => {
 		</>
 	);
 };
-
-export default TaskInput;

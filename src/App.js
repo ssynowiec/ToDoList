@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import styles from './App.module.css';
-import Header from './components/Header';
-import TaskInput from './components/TaskInput';
-import TasksList from './components/TasksList';
-import Footer from './components/Footer';
+import { Header } from './components/Header';
+import { TaskInput } from './components/TaskInput';
+import { TasksList } from './components/TasksList';
+import { Footer } from './components/Footer';
+import { Button } from './components/Button';
 
 const tasksList = [
 	{ id: 0, name: 'gym', completed: false },
@@ -24,7 +25,7 @@ function App() {
 		);
 	};
 
-	const markTaskAsDone = taskId => {
+	const changeTaskStatus = taskId => {
 		setuserTasksList(prevTasksList => {
 			const updatedTasksList = prevTasksList.map(task =>
 				task.id === taskId
@@ -35,16 +36,28 @@ function App() {
 		});
 	};
 
+	const deleteAllTasks = () => {
+		setuserTasksList([]);
+	};
+
 	return (
 		<>
 			<Header />
 			<main className={styles.content}>
 				<TaskInput onNewTaskAdded={addNewTask} />
+				{userTasksList.length === 0 && (
+					<h2 className={styles.noTasks}>
+						No tasks 🤷‍♂️, add here anything
+					</h2>
+				)}
 				<TasksList
 					tasks={userTasksList}
 					onDeleteTask={deleteTask}
-					onMarkAsDone={markTaskAsDone}
+					onChangeTaskStatus={changeTaskStatus}
 				/>
+				{userTasksList.length > 0 && (
+					<Button onClick={deleteAllTasks}>Clear All</Button>
+				)}
 			</main>
 			<Footer />
 		</>

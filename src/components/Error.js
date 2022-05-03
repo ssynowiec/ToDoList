@@ -1,7 +1,7 @@
 import errorImg from '../img/error.png';
-import styles from './Error.module.css';
+import styles from './styles/Error.module.css';
 
-const Error = ({ children }) => {
+export const Error = ({ children }) => {
 	return (
 		<div className={styles.error}>
 			<img src={errorImg} alt='' height='50px' />
@@ -9,5 +9,3 @@ const Error = ({ children }) => {
 		</div>
 	);
 };
-
-export default Error;
