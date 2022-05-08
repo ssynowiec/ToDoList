@@ -1,3 +1,5 @@
+# [Version of Project in TypeScript](https://github.com/ssynowiec/ToDoList-tsx)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
