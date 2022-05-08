@@ -1,4 +1,4 @@
-# [Version of Project in TypeScript](https://github.com/ssynowiec/ToDoList-tsx)
+# [⚠ Version of Project in TypeScript ⚠](https://github.com/ssynowiec/ToDoList-tsx)
 
 # Getting Started with Create React App
 
